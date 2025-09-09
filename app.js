@@ -1,6 +1,29 @@
 let lessons = [];
 let currentWeekStart = getStartOfWeek(new Date());
 
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+
+  // кнопка импорта
+  document.getElementById("importBtn").addEventListener("click", () => {
+    document.getElementById("fileInput").click();
+  });
+
+  document.getElementById("fileInput").addEventListener("change", async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      JSON.parse(text); // проверим что JSON валидный
+      localStorage.setItem("schedule_json", text);
+      alert("Расписание успешно импортировано ✅");
+      location.reload();
+    } catch (err) {
+      alert("Ошибка при импорте JSON: " + err.message);
+    }
+  });
+});
+
 async function init() {
   lessons = await loadLessons();
   renderWeek();
@@ -60,7 +83,7 @@ function renderWeek() {
 
   app.appendChild(daysContainer);
 
-  renderDay(new Date()); // показываем сегодня по умолчанию
+  renderDay(new Date()); // показываем сегодня
 }
 
 function renderDay(day) {
@@ -119,17 +142,3 @@ function isSameDay(a,b) {
 function formatTime(d) {
   return d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
 }
-
-// импорт файла
-document.getElementById("importBtn").addEventListener("click", () => {
-  document.getElementById("fileInput").click();
-});
-
-document.getElementById("fileInput").addEventListener("change", async e => {
-  const file = e.target.files[0];
-  const text = await file.text();
-  localStorage.setItem("schedule_json", text);
-  location.reload();
-});
-
-init();
