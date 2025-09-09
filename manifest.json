@@ -1,8 +1,8 @@
 {
     "name": "Расписание",
     "short_name": "Пары",
-    "start_url": "/schedule_liza/",
-    "scope": "/schedule_liza/",
+    "start_url": "https://dimes2212.github.io/schedule_liza/",
+    "scope": "https://dimes2212.github.io/schedule_liza/",
     "display": "standalone",
     "background_color": "#0f0f10",
     "theme_color": "#0f0f10",
