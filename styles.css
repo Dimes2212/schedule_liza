@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    background: #0f0f10;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  header {
+    padding: 12px;
+    background: #1a1a1d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #1a1a1d;
+  }
+  
+  .days {
+    display: flex;
+    justify-content: space-around;
+    background: #1a1a1d;
+    padding: 8px;
+  }
+  
+  .day {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  
+  .day:hover {
+    background: #2a2a2d;
+  }
+  
+  .lessons {
+    padding: 12px;
+  }
+  
+  .lesson {
+    background: #1a1a1d;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .lesson-type {
+    font-size: 12px;
+    color: #9f9fff;
+    margin-bottom: 6px;
+  }
+  
+  .lesson-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .lesson-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .lesson-extra {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.4;
+  }
+  
