@@ -1,11 +1,11 @@
-const CACHE_NAME = "schedule-cache-v1";
+const CACHE_NAME = "schedule-cache-v2"; // поменял версию, чтобы обновилось
 const ASSETS = [
-  "/",
-  "/index.html",
-  "/styles.css",
-  "/app.js",
-  "/schedule.json",
-  "/manifest.json"
+  "./",
+  "index.html",
+  "styles.css",
+  "app.js",
+  "schedule.json",
+  "manifest.json"
 ];
 
 self.addEventListener("install", e => {
@@ -22,6 +22,13 @@ self.addEventListener("activate", e => {
 
 self.addEventListener("fetch", e => {
   e.respondWith(
-    caches.match(e.request).then(res => res || fetch(e.request))
+    caches.match(e.request).then(res => res || fetch(e.request).then(r => {
+      // кладём новые ресурсы в кэш
+      if (r.ok && e.request.method === "GET") {
+        const clone = r.clone();
+        caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+      }
+      return r;
+    }))
   );
 });

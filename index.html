@@ -4,8 +4,9 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Расписание</title>
-  <link rel="manifest" href="/manifest.json"/>
-  <link rel="stylesheet" href="/styles.css"/>
+  <!-- относительные пути -->
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
   <header>
@@ -15,10 +16,13 @@
   </header>
   <main id="app"></main>
 
-  <script src="/app.js"></script>
+  <!-- относительный путь -->
+  <script src="app.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js");
+      navigator.serviceWorker.register("sw.js")
+        .then(() => console.log("Service Worker зарегистрирован"))
+        .catch(err => console.error("Ошибка SW:", err));
     }
   </script>
 </body>
